@@ -21,5 +21,6 @@ from smul import views
 app_name = 'smul'
 urlpatterns = [
     path('', views.IndexView.as_view(), name='index'),
+    path("<str:code>", views.RouteView.as_view(), name="route"),
     path('admin/', admin.site.urls),
 ]
