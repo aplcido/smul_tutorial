@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="{% static 'smul/style.css' %}">
+    <title>SMUL</title>
+</head>
+
+<body>
+    <div>
+        <div>
+            
+            <h1>Smul</h1>
+        </div>
+        <h2>Your URL but SMUL</h2>
+        <form action="/" method="post">
+            {% csrf_token %}
+            {{ form.url }}<button class="btn" type="submit">MAKE SMUL</button>
+            <small>{{ form.url.errors | join:", " }}</small>
+        </form>
+        {% if smul %}
+        <a href="{{ smul }}">{{ smul }}</a>
+        {% else %}
+        <p>smul, smul, smul...</p>
+        {% endif %}
+    </div>
+</body>
+
+</html>
