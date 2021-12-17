@@ -16,11 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from smul.models import views
+from smul.views import IndexView, RouteView
 
 app_name = 'smul'
 urlpatterns = [
-    path('', views.IndexView.as_view(), name='index'),
-    path("<str:code>", views.RouteView.as_view(), name="route"),
+    path('', IndexView.as_view(), name='index'),
+    path("<str:code>", RouteView.as_view(), name="route"),
     path('admin/', admin.site.urls),
 ]

@@ -4,7 +4,7 @@ from django.shortcuts import get_object_or_404, render
 from django.views.generic import RedirectView, View
 
 from ..forms import SmulForm
-from . import Shurt
+from ..models import Shurt
 
 # Create your views here.
 class IndexView(View):
@@ -20,8 +20,3 @@ class IndexView(View):
        domain = request.build_absolute_uri() #http://127.0.0.1:8000/ in this case
        smul = domain + Shurt.get_or_create_shurt(form.cleaned_data["url"]).code #encoded/shortened URL
        return render(request, self.template_name, {"form": form, "smul": smul})
-
-class RouteView(RedirectView):
-    def get_redirect_url(self, **kwargs):
-        shurt = get_object_or_404(Shurt, code=kwargs["code"])
-        return shurt.url    
