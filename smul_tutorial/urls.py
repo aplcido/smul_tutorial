@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from smul import views
+from smul.models import views
 
 app_name = 'smul'
 urlpatterns = [

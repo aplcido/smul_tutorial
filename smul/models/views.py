@@ -3,9 +3,8 @@ from django.shortcuts import render
 from django.shortcuts import get_object_or_404, render
 from django.views.generic import RedirectView, View
 
-import smul
-from .forms import SmulForm
-from .models import Shurt
+from ..forms import SmulForm
+from . import Shurt
 
 # Create your views here.
 class IndexView(View):
