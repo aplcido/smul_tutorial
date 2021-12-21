@@ -8,7 +8,8 @@ class CounterSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class ShurtSerializer(serializers.ModelSerializer):
-    
+    code = serializers.CharField(read_only=True)
+
     class Meta:
         model = Shurt
         fields = '__all__'

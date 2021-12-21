@@ -33,13 +33,18 @@ from rest_framework.routers import DefaultRouter
 
 
 # Create a router and register our viewsets with it.
-#router = DefaultRouter()
-#router.register(r'smul', views.IndexView)
+router = DefaultRouter()
+router.register(r'smul',views.IndexView,basename="smul")
+
+routerRouteview = DefaultRouter()
+routerRouteview.register(r'(.*)', views.RouteView,basename="route")
+
 
 app_name = 'smul'
 urlpatterns = [
-    path('', IndexView.as_view({'get': 'get','post':'create'}), name='index'),
-    path("<str:code>", RouteView, name="route"),
-    path('admin/', admin.site.urls),
- #   path('', include(router.urls)),
+    #path('', IndexView.as_view({'get': 'retrieve','post':'create'}), name='index'),
+   # path("<str:code>", RouteView, name="route"),
+    #path('admin/', admin.site.urls),
+    path('api/', include(router.urls)),
+    path('',include(routerRouteview.urls))
 ]
